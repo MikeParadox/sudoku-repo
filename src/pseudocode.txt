@@ -1,0 +1,104 @@
+pseudocode:
+
+ask player to choose between paper and computer game:
+    PAPER
+        ask if file with answers is needed and save answer
+
+if player chose computer game:
+    log or sign in the player
+    if the player logged in:
+        if there is saved game:
+            ask if the player would like to continue saved game and warn that
+                game will be lost:
+                YES
+                    fill inputs, filled inputs and num clues from saved files
+                NO
+                    update the statistics
+                    start new game
+if player chose paper game or signed in or doesn't have saved game or has it but doesn't want to continue:
+    ask the player to choose difficulty level
+    if difficulty level is not equal 5:
+        ask if auto move checking is needed
+    solve the game
+    if paper game was chosen:
+        if answers file needed:
+            make and save files
+        else:
+            make and save a file
+        stop execution
+create an initial game set
+
+while game not done:
+    print field
+    if 1 < difficulty level < 5:
+        print number of clues left
+    get input from a player
+    if it a move: TODO make function 'operate move(move)'
+        if ((auto checking is enabled and move is correct) or
+            auto checking is disabled):
+            YES
+
+                save move to inputs
+                save move to moves history
+                print updated field
+
+        else:
+            indicate that the move isn't correct and ask for another one
+    else: TODO make function 'operate command(command)'
+        if input == t:
+            if there are clues:
+                give a clue
+                print field
+                if difficulty level do not equal 1:
+                    substitute 1 from number of clues
+
+            else:
+                print that there are no clues available
+
+        elif input == q:
+            warn the player that game will be lost and ask again:
+                YES
+                    indicate the game was stopped by the player
+                    update statistics
+                    show statistics
+                    stop the game
+                NO
+                    continue
+
+        elif input == r:
+            warn the player that game will be lost and ask again:
+            YES
+                update statistics
+                show statistics
+                restart the game
+            NO
+                continue
+
+        elif input == a:
+            warn the player that game will be lost and ask again
+            YES
+                show the solution
+                indicate the game was stopped by the player
+            NO
+                continue
+
+        elif input == u:
+            undo last move
+
+        else:
+            save the game
+            stop the game
+
+    if game stopped by the player:
+        add one loss to the statistics
+
+    is the game done:
+        YES
+            congratulate the player
+            update statistics
+            show the statistics
+        NO
+            continue
+    aks if the player would like to play again
+
+"""
